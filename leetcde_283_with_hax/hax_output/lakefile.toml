@@ -1,0 +1,10 @@
+name = "hax_output"
+version = "0.1.0"
+defaultTargets = ["hax_output"]
+
+[[lean_lib]]
+name = "HaxOutput"
+
+[[lean_exe]]
+name = "hax_output"
+root = "Main"
