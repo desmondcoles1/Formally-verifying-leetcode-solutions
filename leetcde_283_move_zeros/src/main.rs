@@ -13,7 +13,7 @@ pub fn move_zeroes(nums: &mut Vec<i32>) {
     }
 }
 
-///test
+///manual test
 
 fn main() {
     let mut nums = [0,0,0,1,0,0,0,0,2,0,1,1,1,0,2,20,1,0,0,0].to_vec();
@@ -22,7 +22,7 @@ fn main() {
 }
 
 
-//my solution is not so good, this is better:
+//here is a faster solution
 
 pub fn move_zeroes_better(nums: &mut Vec<i32>) {
     let mut insert_pos = 0;
