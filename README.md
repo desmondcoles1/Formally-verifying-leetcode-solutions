@@ -1,0 +1,5 @@
+## Formally verifying correctness of leetcode solutions
+
+More traditional testing and debugging may fall short in situations where certain errors or vulnerabilities may cause a critical failure. For example updating the architecture of very large and widely depended on web service or in cryptographic protocols like those in used in blockchain technology. Already standard in the hardware industry, formal verification is the process of proving, using mathematically precise methods, that a code satisfies certain specifications and fufills certain properties.
+
+The authoer undertook this project to practice using some formal verification tools for the rust programming language. Rust is used frequetly chosen for projects that have high security requirements and the built-in type system of rust rules out many kinds of bugs, thus reducing the number of things that need formally verified. This project aims to use already existing formal verification tools to verify the correctness of solutions to leetcode problems.
