@@ -1,0 +1,12 @@
+name = "leetcde_283_with_hax"
+version = "0.1.0"
+defaultTargets = ["leetcde_283_with_hax"]
+
+[[lean_lib]]
+name = "leetcde_283_with_hax"
+
+[[require]]
+name = "Hax"
+git.url = "https://github.com/cryspen/hax"
+git.subDir = "hax-lib/proof-libs/lean"
+rev = "main"
