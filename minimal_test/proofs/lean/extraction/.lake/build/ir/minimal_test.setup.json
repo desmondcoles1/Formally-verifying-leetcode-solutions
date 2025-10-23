@@ -1,0 +1,18 @@
+{"plugins": [],
+ "options": {},
+ "name": "minimal_test",
+ "isModule": false,
+ "importArts":
+ {"Hax.Tactics":
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean/Hax/Tactics.olean"],
+  "Hax.Rust_primitives":
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean/Hax/Rust_primitives.olean"],
+  "Hax.Lib":
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean/Hax/Lib.olean"],
+  "Hax.Integers.Spec":
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean/Hax/Integers/Spec.olean"],
+  "Hax.Integers.Ops":
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean/Hax/Integers/Ops.olean"],
+  "Hax":
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean/Hax.olean"]},
+ "dynlibs": []}

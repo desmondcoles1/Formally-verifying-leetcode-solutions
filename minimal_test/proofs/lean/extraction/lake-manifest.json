@@ -1,0 +1,15 @@
+{"version": "1.1.0",
+ "packagesDir": ".lake/packages",
+ "packages":
+ [{"url": "https://github.com/cryspen/hax",
+   "type": "git",
+   "subDir": "hax-lib/proof-libs/lean",
+   "scope": "",
+   "rev": "7437cd0e33c013be5eddeda4fe3f186bbf9ac1b8",
+   "name": "Hax",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"}],
+ "name": "minimal_test",
+ "lakeDir": ".lake"}

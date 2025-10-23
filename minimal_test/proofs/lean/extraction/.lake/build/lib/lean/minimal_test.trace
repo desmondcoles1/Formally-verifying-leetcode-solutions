@@ -1,0 +1,29 @@
+{"synthetic": false,
+ "outputs":
+ {"o": ["2141920188052832566"],
+  "i": "763915098434379943",
+  "c": "13595264166410627190"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/packages/Hax/hax-lib/proof-libs/lean/.lake/build/lib/lean:/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/build/lib/lean /Users/dc45624/.elan/toolchains/leanprover--lean4---v4.23.0/bin/lean /Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/minimal_test.lean -o /Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/build/lib/lean/minimal_test.olean -i /Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/build/lib/lean/minimal_test.ilean -c /Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/build/ir/minimal_test.c --setup /Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/.lake/build/ir/minimal_test.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["minimal_test:deps",
+   [["deps",
+     [["minimal_test/minimal_test:extraDep",
+       [["@minimal_test:extraDep", "1723"]]],
+      ["imports",
+       [["Hax transitive imports (legacy)", "2044426910701710162"],
+        ["Hax:importAllArts", "10991745492585230390"]]]]],
+    ["libs",
+     [["import dynlibs", "1723"],
+      ["package external libraries", "1723"],
+      ["module dynlibs", "1723"],
+      ["module plugins", "1723"]]]]],
+  ["Lean 4.23.0, commit 50aaf682e9b74ab92880292a25c68baa1cc81c87",
+   "5786258275165720599"],
+  ["/Users/dc45624/Documents/GitHub/Formally-verifying-leetcode-solutions/minimal_test/proofs/lean/extraction/minimal_test.lean",
+   "3118022587135690899"],
+  ["options", "1723"],
+  ["Module.leanArgs: #[]", "1723"]],
+ "depHash": "4214137052948768636"}

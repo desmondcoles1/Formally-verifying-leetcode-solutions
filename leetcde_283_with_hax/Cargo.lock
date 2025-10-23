@@ -83,8 +83,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "leetcde_1071_gcd_strings"
-version = "0.1.0"
+name = "leetcde_283_with_hax"
+version = "0.0.0"
 dependencies = [
  "hax-lib",
 ]

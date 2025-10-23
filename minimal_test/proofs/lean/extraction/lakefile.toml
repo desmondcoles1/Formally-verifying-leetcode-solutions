@@ -1,0 +1,12 @@
+name = "minimal_test"
+version = "0.1.0"
+defaultTargets = ["minimal_test"]
+
+[[lean_lib]]
+name = "minimal_test"
+
+[[require]]
+name = "Hax"
+git = "https://github.com/cryspen/hax"
+subDir = "hax-lib/proof-libs/lean"
+rev = "main"

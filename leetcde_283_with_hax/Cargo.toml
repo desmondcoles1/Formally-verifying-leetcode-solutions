@@ -1,6 +1,5 @@
 [package]
-name = "leetcde_1071_gcd_strings"
-version = "0.1.0"
+name = "leetcde_283_with_hax"
 edition = "2024"
 
 [dependencies]
