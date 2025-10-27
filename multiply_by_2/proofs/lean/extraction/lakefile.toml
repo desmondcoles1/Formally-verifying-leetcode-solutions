@@ -1,0 +1,12 @@
+name = "multiply_by_2"
+version = "0.1.0"
+defaultTargets = ["multiply_by_2"]
+
+[[lean_lib]]
+name = "multiply_by_2"
+
+[[require]]
+name = "Hax"
+git = "https://github.com/cryspen/hax"
+subDir = "hax-lib/proof-libs/lean"
+rev = "main"
