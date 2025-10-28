@@ -19,14 +19,20 @@ def Multiply_by_2.main
 
 def Multiply_by_2.mutliply_by_2 (x : u8) : Result u8 := do ((2 : u8) *? x)
 
-def Multiply_by_2.digit_shift (x : u8) : Result u8 := do z (Rust_primitives.Hax.Machine_int.shl x (1 : i32))
+--def Multiply_by_2.digit_shift (x : u8) : Result u8 := do  (Rust_primitives.Hax.Machine_int.shl x (1 : i32))
 
 def Multiply_by_2.add_to_itself (x : u8) : Result u8 := do (x +? x)
 
 theorem equivalence_of_doubling_procedure (x: u8) :
   Multiply_by_2.mutliply_by_2 x = Multiply_by_2.add_to_itself x := by
   unfold Multiply_by_2.mutliply_by_2 Multiply_by_2.add_to_itself
-
-
---If I remove the ? from the arithmetic then I can verify everything is equal using simp+grind
--- the issue is about errors, do these functions panic at the same place?
+  simp[HaxAdd.add, HaxMul.mul]
+  unfold BitVec.umulOverflow  BitVec.uaddOverflow
+  simp
+  have h : 2 * UInt8.toNat x = UInt8.toNat x + UInt8.toNat x := by omega
+  simp only [h]
+  congr 1
+  have h2 : 2 * x =  x +  x := by grind --using grind for this is crazy
+  rw[h2]
+--this proofs amounts to: they panic at the same time and return the same result
+--note to self: cmd + click pulls up lean documentation for code
