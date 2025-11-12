@@ -1,0 +1,12 @@
+name = "arithmetic"
+version = "0.1.0"
+defaultTargets = ["arithmetic"]
+
+[[lean_lib]]
+name = "arithmetic"
+
+[[require]]
+name = "Hax"
+git = "https://github.com/cryspen/hax"
+subDir = "hax-lib/proof-libs/lean"
+rev = "main"

@@ -1,17 +1,17 @@
 fn main() {
 }
 
-#[hax_lib::requires(x < 7)]
-fn polynomial1(x: u8) -> u8{
-    (x-1)*(x-2)*(x+3)
+
+fn polynomial_factors1(x: i32) -> i32{
+    (x)*(x-1)
 }
 
-#[hax_lib::requires(x < 7)]
-fn polynomial11(x: u8) -> u8{
-    (x-2)*(x-1)*(x+3)
+
+fn polynomial_factors2(x: u8) -> u8{
+    x*(x-2)
 }
 
-#[hax_lib::requires(x < 7)]
-fn polynomial2(x: u8) -> u8{
-    x*x*x - 7 * x + 6
+
+fn polynomial(x: u8) -> u8{
+    x*x-x
 }
