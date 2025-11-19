@@ -36,7 +36,7 @@ theorem order_of_mult (x : i32) :
 /--This is more subtle because these polynomails don't panic at the same time
 -/
 
-theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^16) (xlbnd: x > -2^16) :
+theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^15) (xlbnd: x > -2^15) :
   Arimthetic.polynomial x = Arimthetic.polynomial_factors1 x := by
   unfold Arimthetic.polynomial
   unfold Arimthetic.polynomial_factors1
@@ -44,9 +44,12 @@ theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^16) (xlbnd: x > -2^16) :
   have overflow_1: (Int32.toBitVec x).smulOverflow (Int32.toBitVec x) = false := by
     unfold BitVec.smulOverflow
     simp
-    have h_x_range : -65536 < Int32.toInt x ∧ Int32.toInt x < 65536 := by
-      sorry
-    sorry
+    have squbnd : Int32.toInt x * Int32.toInt x < 2147483648 := by
+      have xubnd' : Int32.toInt x < 32768 := by sorry --exact_mod_cast xubnd
+      have xubnd' : Int32.toInt x * Int32.toInt x < 1073741824 := by sorry
+      omega
+    have sqlbnd : Int32.toInt x * Int32.toInt x ≥ -2147483648 := by sorry
+    exact ⟨squbnd, sqlbnd⟩
   have overflow_2: (Int32.toBitVec x).ssubOverflow 1#32 = false := by sorry
   have overflow_3: (Int32.toBitVec (x*x)).ssubOverflow (Int32.toBitVec x) = false := by sorry
   simp [overflow_1, overflow_2]
