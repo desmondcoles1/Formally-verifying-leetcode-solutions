@@ -17,39 +17,41 @@ def Arimthetic.main
   := do
   (pure Rust_primitives.Hax.Tuple0.mk)
 
-def Arimthetic._.requires (x : u8) : Result Bool := do
-  (Rust_primitives.Hax.Machine_int.lt x (7 : u8))
+def Arimthetic.polynomial_factors1 (x : i32) : Result i32 := do
+  (x *? (← (x -? (1 : i32))))
 
-def Arimthetic.polynomial1 (x : u8) : Result u8 := do
-  ((← ((← (x -? (1 : u8))) *? (← (x -? (2 : u8))))) *? (← (x +? (3 : u8))))
+def Arimthetic.polynomial_factors2 (x : i32) : Result i32 := do
+  (x *? (← (x -? (1 : i32))))
 
-def Arimthetic.__1.requires (x : u8) : Result Bool := do
-  (Rust_primitives.Hax.Machine_int.lt x (7 : u8))
+def Arimthetic.polynomial (x : i32) : Result i32 := do ((← (x *? x)) -? x)
 
-def Arimthetic.polynomial11 (x : u8) : Result u8 := do
-  ((← ((← (x -? (2 : u8))) *? (← (x -? (1 : u8))))) *? (← (x +? (3 : u8))))
-
-def Arimthetic.__2.requires (x : u8) : Result Bool := do
-  (Rust_primitives.Hax.Machine_int.lt x (7 : u8))
-
-def Arimthetic.polynomial2 (x : u8) : Result u8 := do
-  ((← ((← ((← (x *? x)) *? x)) -? (← ((7 : u8) *? x)))) +? (6 : u8))
-
-  --a simple theorem
-theorem order_of_operations_doesnt_matter (x: u8) :
-  Arimthetic.polynomial1 x = Arimthetic.polynomial11 x := by
-  unfold Arimthetic.polynomial1
-  unfold Arimthetic.polynomial11
+theorem order_of_mult (x : i32) :
+  Arimthetic.polynomial_factors1 x = Arimthetic.polynomial_factors2 x := by
+  unfold Arimthetic.polynomial_factors1
+  unfold Arimthetic.polynomial_factors2
   simp[HaxMul.mul, HaxSub.sub]
-  unfold BitVec.umulOverflow  BitVec.usubOverflow
-  simp
-  sorry
+--this proof works in a farily straightforward manner;
+--it unfolds the definition and checks that the conditionals all produce the same thing
 
-theorem results_are_same (x: u8) :
-  (Arimthetic.polynomial1 x).toOption = (Arimthetic.polynomial11 x).toOption := by
-  sorry--blargh, there should be someway to remove monad wrapper? or separate
---when functions panic vs what they output
+/--This is more subtle because these polynomails don't panic at the same time
+-/
 
-
-theorem panic_at_the_same_time (x: u8) :
-  (Arimthetic.polynomial1 x).isOk = (Arimthetic.polynomial11 x).isOk := by sorry
+theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^16) (xlbnd: x > -2^16) :
+  Arimthetic.polynomial x = Arimthetic.polynomial_factors1 x := by
+  unfold Arimthetic.polynomial
+  unfold Arimthetic.polynomial_factors1
+  simp[HaxMul.mul, HaxSub.sub]
+  have overflow_1: (Int32.toBitVec x).smulOverflow (Int32.toBitVec x) = false := by
+    unfold BitVec.smulOverflow
+    simp
+    have h_x_range : -65536 < Int32.toInt x ∧ Int32.toInt x < 65536 := by
+      sorry
+    sorry
+  have overflow_2: (Int32.toBitVec x).ssubOverflow 1#32 = false := by sorry
+  have overflow_3: (Int32.toBitVec (x*x)).ssubOverflow (Int32.toBitVec x) = false := by sorry
+  simp [overflow_1, overflow_2]
+  have overflow_4: (Int32.toBitVec x * Int32.toBitVec x).ssubOverflow (Int32.toBitVec x) = false := by sorry
+  have overflow_5: (Int32.toBitVec x).smulOverflow (Int32.toBitVec x - 1#32) = false := by sorry
+  have arith: x * (x-1) = x * x -x := by sorry
+  rw[arith]
+  simp[overflow_4, overflow_5]
