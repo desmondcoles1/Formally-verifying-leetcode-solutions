@@ -33,9 +33,14 @@ theorem order_of_mult (x : i32) :
 --this proof works in a farily straightforward manner;
 --it unfolds the definition and checks that the conditionals all produce the same thing
 
+
+theorem i32_int_arith (x y : i32) :
+  x < y ↔ Int32.toInt x < Int32.toInt y := by
+  unfold Int32.toInt
+  sorry
+
 /--This is more subtle because these polynomails don't panic at the same time
 -/
-
 theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^15) (xlbnd: x > -2^15) :
   Arimthetic.polynomial x = Arimthetic.polynomial_factors1 x := by
   unfold Arimthetic.polynomial
@@ -45,7 +50,11 @@ theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^15) (xlbnd: x > -2^15) :
     unfold BitVec.smulOverflow
     simp
     have squbnd : Int32.toInt x * Int32.toInt x < 2147483648 := by
-      have xubnd' : Int32.toInt x < 32768 := by sorry --exact_mod_cast xubnd
+      have xubnd' : Int32.toInt x < 2^15 := by  --it isn't exact_mod_cast bc i32 doesnt cast
+          have : 2^15 = Int32.toInt (2^15 : i32) := by sorry
+          rw [this]
+          rw [← i32_int_arith] --this i32 thing sucks, I gotta find a way to automate this out
+          exact xubnd
       have xubnd' : Int32.toInt x * Int32.toInt x < 1073741824 := by sorry
       omega
     have sqlbnd : Int32.toInt x * Int32.toInt x ≥ -2147483648 := by sorry
