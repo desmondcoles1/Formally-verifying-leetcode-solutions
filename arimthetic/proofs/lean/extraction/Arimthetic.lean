@@ -51,11 +51,16 @@ theorem factored_vs_unfactored (x: i32) (xubnd : x < 2^15) (xlbnd: x > -2^15) :
     simp
     have squbnd : Int32.toInt x * Int32.toInt x < 2147483648 := by
       have xubnd' : Int32.toInt x < 2^15 := by  --it isn't exact_mod_cast bc i32 doesnt cast
-          have : 2^15 = Int32.toInt (2^15 : i32) := by sorry
+          have : 2^15 = Int32.toInt (2^15 : i32) := by decide -- this tactic does a computation
           rw [this]
           rw [← i32_int_arith] --this i32 thing sucks, I gotta find a way to automate this out
           exact xubnd
-      have xubnd' : Int32.toInt x * Int32.toInt x < 1073741824 := by sorry
+      have xlbnd' : -2^15 < Int32.toInt x := by
+          have : -2^15 = Int32.toInt (-2^15 : i32) := by decide
+          rw [this]
+          rw [← i32_int_arith]
+          exact xlbnd
+      have xubnd'' : Int32.toInt x * Int32.toInt x < 1073741824 := by sorry
       omega
     have sqlbnd : Int32.toInt x * Int32.toInt x ≥ -2147483648 := by sorry
     exact ⟨squbnd, sqlbnd⟩
